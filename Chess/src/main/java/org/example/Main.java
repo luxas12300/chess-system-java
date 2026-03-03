@@ -2,11 +2,13 @@ package org.example;
 
 import org.example.boardgame.Board;
 import org.example.boardgame.Position;
+import org.example.chess.ChessException;
 import org.example.chess.ChessMatch;
 import org.example.chess.ChessPiece;
 import org.example.chess.ChessPosition;
 
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -18,6 +20,10 @@ public class Main {
       ChessMatch chessMatch = new ChessMatch();
 
       while (true){
+
+          try{
+
+          UI.clearScreen();
           UI.printBoard(chessMatch.getPieces());
           System.out.println();
           System.out.print("Source: ");
@@ -28,6 +34,14 @@ public class Main {
           ChessPosition target = UI.readChessPosition(sc);
 
           ChessPiece apturedPiece = chessMatch.performChessMove(source, target);
+
+          }catch (ChessException e){
+              System.out.println(e.getMessage());
+              sc.nextLine();
+          }catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+            sc.nextLine();
+        }
         }
     }
 }
