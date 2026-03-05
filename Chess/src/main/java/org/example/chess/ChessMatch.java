@@ -4,6 +4,7 @@ import org.example.boardgame.Board;
 import org.example.boardgame.Piece;
 import org.example.boardgame.Position;
 import org.example.chess.pieces.King;
+import org.example.chess.pieces.Pawn;
 import org.example.chess.pieces.Rook;
 
 import javax.swing.*;
